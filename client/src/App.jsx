@@ -1,28 +1,51 @@
-import { Route } from 'react-router-dom';
-import react from 'react';
-import Navbar from './components/Navbar.jsx';
-import { useLocation } from 'react-router-dom';
-import { Routes} from 'react-router-dom';
-import { Home } from './Home.jsx';
-import CarDetails from './CarDetails.jsx';
-import Cars from './Cars.jsx';
-import MyBookings from './MyBookings.jsx';
+import React, { useState } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
+
+import Navbar from './components/Navbar.jsx'
+import Home from './pages/Home.jsx'
+import CarDetails from './pages/CarDetails.jsx'
+import Cars from './pages/Cars.jsx'
+import MyBookings from './pages/MyBookings.jsx'
+import Footer from './components/Footer.jsx'
+
+// OWNER PAGES
+import Layout from './pages/owner/Layout.jsx'
+import Dashboard from './pages/owner/Dashboard.jsx'
+import AddCar from './pages/owner/AddCar.jsx'
+import ManageCars from './pages/owner/ManageCars.jsx'
+import ManageBookings from './pages/owner/ManageBookings.jsx'
+import Login from './components/Login.jsx'
 
 function App() {
-  const [showLogin, setShowLogin] = react.useState(false);
-  const isOwnerPath=useLocation().pathname.startsWith('/Owner');
-  return (
-     <>
-  { isOwnerPath &&  <Navbar setShowLogin={setShowLogin} />}
+  const [showLogin, setShowLogin] = useState(false)
+  const { pathname } = useLocation()
 
-  <Routes>
-<Route path='/' element={<Home/>}/>
-<Route path='/car-details/:id' element={<CarDetails/>}/>
-<Route path='/cars' element={<Cars/>}/>
-<Route path='/my-bookings' element={<MyBookings/>}/>
-  </Routes>
-     </>
-  );
+  const isOwnerPath = pathname.toLowerCase().startsWith('/owner')
+
+  return (
+    <>
+    {showLogin && <Login setShowLogin={setShowLogin} />}
+      {!isOwnerPath && <Navbar setShowLogin={setShowLogin} />}
+
+      <Routes>
+        {/* USER ROUTES */}
+        <Route path="/" element={<Home />} />
+        <Route path="/car-details/:id" element={<CarDetails />} />
+        <Route path="/cars" element={<Cars />} />
+        <Route path="/my-bookings" element={<MyBookings />} />
+
+        {/* OWNER ROUTES */}
+        <Route path="/owner" element={<Layout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="add-car" element={<AddCar />} />
+          <Route path="manage-cars" element={<ManageCars />} />
+          <Route path="manage-bookings" element={<ManageBookings />} />
+        </Route>
+      </Routes>
+
+      {!isOwnerPath && <Footer />}
+    </>
+  )
 }
 
-export default App;
+export default App
