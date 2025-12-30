@@ -17,7 +17,7 @@ const Dashboard = () => {
     { title: 'Total Cars', value: data.totalCars, icon: assets.carIconColored },
     { title: 'Total Bookings', value: data.totalBookings, icon: assets.listIconColored },
     { title: 'Pending Bookings', value: data.pendingBookings, icon: assets.cautionIconColored },
-    { title: 'Completed Bookings', value: data.completedBookings, icon: assets.tick_icon },
+    { title: 'Completed Bookings', value: data.completedBookings, icon: assets.listIconColored },
   ]
 
   useEffect(() => {
@@ -60,7 +60,7 @@ gap-6 my-8 max-w-3xl'>
           <p className='text-gray-500'>latest curstomer bookings</p>
 
           {
-            data.recentBookings.map((booking,index)=>(   // 👈 yahi fix hai
+            data.recentBookings.map((booking,index)=>(  
               <div key={index} className='mt-4 flex items-center justify-between'> 
 
                 <div className='flex items-center gap-2'>

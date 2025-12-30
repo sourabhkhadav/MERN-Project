@@ -11,7 +11,7 @@ const NavbarOwner = () => {
         <img src={assets.logo} alt="logo" className="h-7" />
       </Link>
 
-      <p>Welcome, {user.name || 'Owner'}</p>
+      <p>Welcome, Admin</p>
     </div>
   )
 }

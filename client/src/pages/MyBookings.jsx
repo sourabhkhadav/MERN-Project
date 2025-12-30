@@ -90,7 +90,7 @@ const MyBookings = () => {
                   />
                   <div>
                     <p className="text-gray-500">pickup location</p>
-                    <p>{booking.pickupLocation}</p>
+                    <p>{booking.car.location}</p>
                   </div>
                 </div>
               </div>
@@ -102,7 +102,7 @@ const MyBookings = () => {
                   <h1 className='text-2xl font-semibold text-primary'>
                     {currency}{booking.price}
                   </h1>
-                  <p>booked on {booking.created?.split('T')[0]}</p> 
+                  <p>booked on {booking.createdAt?.split('T')[0]}</p> 
                 </div>
               </div>
 

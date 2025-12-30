@@ -18,7 +18,7 @@ const navigate=useNavigate();
     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
   />
 
-  {car.isAvailable && 
+  {car.isAvaliable && 
     <p className="absolute top-4 left-4 bg-primary/90 text-white text-xs px-2.5 py-1 rounded-full">
       Available Now
     </p>
@@ -56,7 +56,7 @@ const navigate=useNavigate();
 <div className="mt-4 grid grid-cols-2 gap-y-2 text-gray-600">
 
   <div className="flex items-center text-sm">
-    <img src={assets.users_icons} alt="" className="h-4 mr-2"/>
+    <img src={assets.users_icon} alt="" className="h-4 mr-2"/>
     <span>{car.seating_capacity} seats</span>
   </div>
 
